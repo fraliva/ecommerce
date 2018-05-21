@@ -211,17 +211,17 @@ class User extends Model
 
 		$results = $sql->select("
 			SELECT * 
-			FROM tb_userspasswordrecoveries a
+			FROM tb_userspasswordsrecoveries a
 			INNER JOIN tb_users b USING(iduser)
 			INNER JOIN tb_persons c USING(idperson)
 			WHERE
 			a.idrecovery = :idrecovery
 			AND
-			a.dtrecorevy IS NULL
+			a.dtrecovery IS NULL
 			AND
-			DATA_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW();
+			DATE_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW();
 			", array(
-				":idrecovery"=>idrecovery
+				":idrecovery"=>$idrecovery
 		));
 
 		if (count($results) === 0 ) {
@@ -232,6 +232,29 @@ class User extends Model
 			return $results[0];
 		}
 	} // End function validForgotDecrypt
+
+	public static function setForgotUsed($idrecovery)
+	{
+
+		$sql = new Sql;
+
+		$sql->select("UPDATE tb_userspasswordrecoveries SET dtrecovery = NOW() WHERE idrecovery = :idrecovery", array(
+			":idrecovery"=>$idrecovery
+		));
+
+	} // End function setForgotUsed
+
+	public function setPassword($password)
+	{
+
+		$sql = new Sql();
+
+		$sql->query("UPDATE tb_users SET despassword = :password WHERE iduser = :iduser", array(
+			":password"=>$password,
+			":iduser"=>$this->getiduser()
+		));
+
+	} // End function setPassword
 
 } // End class User
 

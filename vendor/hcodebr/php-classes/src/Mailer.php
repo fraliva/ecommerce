@@ -3,6 +3,7 @@
 namespace Hcode;
 
 use Rain\Tpl;
+use PHPMailer;
 
 class Mailer 
 {
@@ -33,7 +34,7 @@ class Mailer
 		$html = $tpl->draw($tplName, true);
 
 		//Create a new PHPMailer instance
-		$this->mail = new PHPMailer();
+		$this->mail = new PHPMailer;
 
 		//Tell PHPMailer to use SMTP
 		$this->mail->isSMTP();
@@ -52,6 +53,15 @@ class Mailer
 
 		//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
 		$this->mail->Port = 587;
+
+		//Alteração feita em 17/05/2018
+		$this->mail->SMTPOptions = array(
+		    'ssl' => array(
+		        'verify_peer' => false,
+		        'verify_peer_name' => false,
+		        'allow_self_signed' => true
+		    )
+		);
 
 		//Set the encryption system to use - ssl (deprecated) or tls
 		$this->mail->SMTPSecure = 'tls';
