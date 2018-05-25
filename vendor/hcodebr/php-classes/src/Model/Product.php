@@ -100,7 +100,7 @@ class Product extends Model
 	{
 
 		$extension = explode(".", $file["name"]);
-		$etenssion = end($extension);
+		$extension = end($extension);
 
 		switch ($extension){
 
