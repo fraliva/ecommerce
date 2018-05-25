@@ -26,7 +26,7 @@
         <form role="form" action="/admin/products/create" method="post">
           <div class="box-body">
             <div class="form-group">
-              <label for="desproduct">Nome da produto</label>
+              <label for="desproduct">Nome do produto</label>
               <input type="text" class="form-control" id="desproduct" name="desproduct" placeholder="Digite o nome do produto">
             </div>
             <div class="form-group">
