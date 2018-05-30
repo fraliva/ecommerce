@@ -143,6 +143,38 @@ class Product extends Model
 
 	} // End function setPhoto
 
+	public function getFromURL($desurl)
+	{
+
+		$sql = new Sql();
+
+		$rows = $sql->select("
+			SELECT *
+			FROM tb_products
+			WHERE desurl = :desurl;", array(
+			":desurl"=>$desurl
+		));
+
+		$this->setData($rows[0]);
+	} // End function getFromURL
+
+	public function getCategories()
+	{
+
+		$sql = new Sql();
+
+		return $sql->select("
+			SELECT *
+			FROM tb_categories a
+			INNER JOIN tb_productscategories b
+			ON a.idcategory = b.idcategory
+			WHERE b.idproduct = :idproduct;
+		", array(
+			":idproduct"=>$this->getidproduct()
+		));
+
+	} // End function getCategories
+
 } // End class User
 
 ?>
