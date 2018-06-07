@@ -5,8 +5,9 @@ use \Hcode\Model\User;
 
 // Rota admin do projeto
 $app->get('/admin', function() {
-    
+  
     User::verifyLogin();
+
 	$page = new PageAdmin();
 	$page->setTpl("index");
 
@@ -27,6 +28,7 @@ $app->get('/admin/login', function() {
 $app->post('/admin/login', function() {
 
 	User::login($_POST["login"], $_POST["password"]);
+
 	header("Location: /admin");
 	exit;
 

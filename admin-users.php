@@ -64,7 +64,9 @@ $app->post("/admin/users/create", function(){
 
 	$user = new User();
 
-	$_POST["inadmin"] = isset($_POST["inadmin"])?1:0;
+	$_POST["inadmin"] = (isset($_POST["inadmin"]))?1:0;
+
+	$_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, ["cost"=>12]);
  
 	$user->setData($_POST);
 
@@ -81,7 +83,7 @@ $app->post("/admin/users/:iduser", function($iduser){
 
 	$user = new User();
 
-	$_POST["inadmin"] = isset($_POST["inadmin"])?1:0;
+	$_POST["inadmin"] = (isset($_POST["inadmin"]))?1:0;
 
 	$user->get((int)$iduser);
 
@@ -93,4 +95,5 @@ $app->post("/admin/users/:iduser", function($iduser){
 	exit;
 
 });
+
 ?>
