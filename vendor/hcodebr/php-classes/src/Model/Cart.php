@@ -11,7 +11,7 @@ class Cart extends Model
 {
 
 	const SESSION = "Cart";
-	const CART_ERROR = "CartError";
+	const SESSION_ERROR = "CartError";
 
 	public static function getFromSession()
 	{
@@ -40,6 +40,9 @@ class Cart extends Model
 				}
 
 				$cart->setData($data);
+
+				var_dump($cart->getValues());
+				exit;
 
 				$cart->save();
 
@@ -275,14 +278,14 @@ class Cart extends Model
 	public static function setMsgError()
 	{
 
-		$_SESSION[Cart::CartError] = $msg;
+		$_SESSION[Cart::SESSION_ERROR] = $msg;
 			
 	} // End function setMsgErro
 
 	public static function getMsgError()
 	{
 
-		$msg = (isset($_SESSION[Cart::CartError])) ? $_SESSION[Cart::CartError] : "";
+		$msg = (isset($_SESSION[Cart::SESSION_ERROR])) ? $_SESSION[Cart::SESSION_ERROR] : "";
 
 		Cart::clearMsgError();
 
@@ -293,14 +296,14 @@ class Cart extends Model
 	public static function clearMsgError()
 	{
 
-		$_SESSION[Cart::CartError] = NULL;
+		$_SESSION[Cart::SESSION_ERROR] = NULL;
 			
 	} // End function getMsgErro
 
 	public function updateFreight()
 	{
 
-		if ($this->getdeszipcoe != "") {
+		if ($this->getdeszipcode() != "") {
 
 			$this->setFreight($this->getdeszipcode);
 
@@ -322,7 +325,7 @@ class Cart extends Model
 
 		$this->updateFreight();
 
-		$total = $this->getProductsTotals();
+		$totals = $this->getProductsTotals();
 
 		$this->setvlsubtotal($totals["vlprice"]);
 		$this->setvltotal($totals["vlprice"] + $this->getvlfreight());
