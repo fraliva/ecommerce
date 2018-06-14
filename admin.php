@@ -100,7 +100,7 @@ $app->post("/admin/forgot/reset", function(){
 
 	$user->get((int)$forgot["iduser"]);
 
-	$password = getPasswordHash($_POST["password"]);
+	$password = User::getPasswordHash($_POST["password"]);
 
 	$user->setPassword($password);
 
