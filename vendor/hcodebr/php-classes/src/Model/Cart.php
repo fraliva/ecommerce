@@ -41,9 +41,6 @@ class Cart extends Model
 
 				$cart->setData($data);
 
-				// var_dump($cart->getValues());
-				// exit;
-
 				$cart->save();
 
 				$cart->setToSession();
@@ -111,9 +108,6 @@ class Cart extends Model
 			":vlfreight"=>$this->getvlfreight(),
 			":nrdays"=>$this->getnrdays()			
 		));
-
-		var_dump($results);
-		exit;
 
 		$this->setData($results[0]);
 
