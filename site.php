@@ -69,12 +69,13 @@ $app->get("/cart", function(){
 	$cart = Cart::getFromSession();
 
 	$page = new Page();
-
+	$page->setTpl("cart");
+	/*
 	$page->setTpl("cart", array(
 		"cart"=>$cart->getValues(),
 		"products"=>$carts->getProducts(),
 		"error"=>Cart::getMsgError()
-	));
+	));*/
 	
 });
 

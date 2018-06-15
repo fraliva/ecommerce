@@ -41,8 +41,8 @@ class Cart extends Model
 
 				$cart->setData($data);
 
-				var_dump($cart->getValues());
-				exit;
+				// var_dump($cart->getValues());
+				// exit;
 
 				$cart->save();
 
@@ -112,7 +112,9 @@ class Cart extends Model
 			":nrdays"=>$this->getnrdays()			
 		));
 
-		
+		var_dump($results);
+		exit;
+
 		$this->setData($results[0]);
 
 	} // End function save
