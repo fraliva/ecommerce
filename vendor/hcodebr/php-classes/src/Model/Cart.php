@@ -16,7 +16,7 @@ class Cart extends Model
 	public static function getFromSession()
 	{
 
-		$cart = new Cart();
+		$cart = new Cart();		
 
 		if (isset($_SESSION[Cart::SESSION]) && (int)$_SESSION[Cart::SESSION]["idcart"] > 0 ) {
 
@@ -29,7 +29,7 @@ class Cart extends Model
 			if (!(int)$cart->getidcart() > 0) {
 
 				$data = array(
-					":dessessionid"=>session_id()
+					"dessessionid"=>session_id()
 				);
 
 				if (User::checkLogin(false)) {
@@ -113,7 +113,7 @@ class Cart extends Model
 
 	} // End function save
 
-	public function addProduct(Product $product)
+	/*public function addProduct(Product $product)
 	{
 
 		$sql = new Sql();
@@ -125,9 +125,9 @@ class Cart extends Model
 
 		$this->getCalculateTotal();
 	
-	} // End function addProduct
+	} // End function addProduct*/
 
-	public function removeProduct(Product $product, $all = false)
+/*	public function removeProduct(Product $product, $all = false)
 	{
 
 		$sql = new Sql();
@@ -151,8 +151,8 @@ class Cart extends Model
 		$this->getCalculateTotal();
 
 	} // End function removeProduct
-
-	public function getProduct()
+*/
+/*	public function getProduct()
 	{
 
 		$sql = new Sql();
@@ -173,8 +173,8 @@ class Cart extends Model
 		return Product::checkList($rows);
 	
 	} // End function getProduct
-
-	public function getProductsTotals()
+*/
+/*	public function getProductsTotals()
 	{
 
 		$sql = new Sql();
@@ -205,8 +205,8 @@ class Cart extends Model
 		}
 	
 	} // End function getProductsTotals
-
-	public function setFreight($nrzipcode)
+*/
+/*	public function setFreight($nrzipcode)
 	{
 
 		$zipcode = str_replace("-", "", $nrzipcode);
@@ -263,22 +263,22 @@ class Cart extends Model
 		}
 
 	} // End function setFreight
-
-	public static function formatValueToDecimal($value):float
+*/
+/*	public static function formatValueToDecimal($value):float
 	{
 
 		$value = str_replace(".", "", $value);
 		return str_replace(",", ".", $value);
 	} // End function formatValueToDecimal
-
-	public static function setMsgError()
+*/
+/*	public static function setMsgError()
 	{
 
 		$_SESSION[Cart::SESSION_ERROR] = $msg;
 			
 	} // End function setMsgErro
-
-	public static function getMsgError()
+*/
+/*	public static function getMsgError()
 	{
 
 		$msg = (isset($_SESSION[Cart::SESSION_ERROR])) ? $_SESSION[Cart::SESSION_ERROR] : "";
@@ -288,15 +288,15 @@ class Cart extends Model
 		return $msg;
 			
 	} // End function getMsgErro
-
-	public static function clearMsgError()
+*/
+/*	public static function clearMsgError()
 	{
 
 		$_SESSION[Cart::SESSION_ERROR] = NULL;
 			
 	} // End function getMsgErro
-
-	public function updateFreight()
+*/
+/*	public function updateFreight()
 	{
 
 		if ($this->getdeszipcode() != "") {
@@ -306,8 +306,8 @@ class Cart extends Model
 		}
 
 	} // function updateFreight
-
-	public function getValues()
+*/
+/*	public function getValues()
 	{
 
 		$this->getCalculateTotal();
@@ -315,8 +315,8 @@ class Cart extends Model
 		return parent::GetValues();
 
 	} // End function getValues
-
-	public function getCalculateTotal()
+*/
+/*	public function getCalculateTotal()
 	{
 
 		$this->updateFreight();
@@ -327,7 +327,7 @@ class Cart extends Model
 		$this->setvltotal($totals["vlprice"] + $this->getvlfreight());
 
 	} // End function getCalculateTotal
-
+*/
 } // End class User
 
 ?>
