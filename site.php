@@ -69,17 +69,17 @@ $app->get("/cart", function(){
 	$cart = Cart::getFromSession();
 
 	$page = new Page();
-	$page->setTpl("cart");
-	/*
+	
 	$page->setTpl("cart", array(
 		"cart"=>$cart->getValues(),
-		"products"=>$carts->getProducts(),
-		"error"=>Cart::getMsgError()
-	));*/
+		"products"=>$cart->getProducts()
+		//,
+		//"error"=>Cart::getMsgError()
+	));
 	
 });
 
-$app->get("/cart/idproduct/add", function(){
+$app->get("/cart/:idproduct/add", function($idproduct){
 
 	$product = new Product();
 
@@ -100,7 +100,7 @@ $app->get("/cart/idproduct/add", function(){
 
 });
 
-$app->get("/cart/idproduct/minus", function(){
+$app->get("/cart/:idproduct/minus", function($idproduct){
 
 	$product = new Product();
 
@@ -115,7 +115,7 @@ $app->get("/cart/idproduct/minus", function(){
 
 });
 
-$app->get("/cart/idproduct/remove", function(){
+$app->get("/cart/:idproduct/remove", function($idproduct){
 
 	$product = new Product();
 
