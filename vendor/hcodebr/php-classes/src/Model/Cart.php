@@ -123,7 +123,7 @@ class Cart extends Model
 			":idproduct"=>$product->getidproduct()
 		));
 
-		//$this->getCalculateTotal();
+		$this->getCalculateTotal();
 	
 	} // End function addProduct
 
@@ -148,7 +148,7 @@ class Cart extends Model
 
 		}
 
-		//$this->getCalculateTotal();
+		$this->getCalculateTotal();
 
 	} // End function removeProduct
 
@@ -174,7 +174,7 @@ class Cart extends Model
 	
 	} // End function getProduct
 
-/*	public function getProductsTotals()
+	public function getProductsTotals()
 	{
 
 		$sql = new Sql();
@@ -205,11 +205,11 @@ class Cart extends Model
 		}
 	
 	} // End function getProductsTotals
-*/
-/*	public function setFreight($nrzipcode)
+
+	public function setFreight($nrzipcode)
 	{
 
-		$zipcode = str_replace("-", "", $nrzipcode);
+		$nrzipcode = str_replace("-", "", $nrzipcode);
 
 		$totals  = $this->getProductsTotals();
 
@@ -229,13 +229,13 @@ class Cart extends Model
 				"nVlComprimento"=>$totals["vllength"],
 				"nVlAltura"=>$totals["vlheight"],
 				"nVlLargura"=>$totals["vlwidth"],
-				"nVlDiametro"=>"",
-				"sCdMaioPropria"=>"S",
-				"nvVlValorDeclarado"=>$totals["vlprice"],
+				"nVlDiametro"=>"0",
+				"sCdMaoPropria"=>"S",
+				"nVlValorDeclarado"=>$totals["vlprice"],
 				"sCdAvisoRecebimento"=>"S"
 			));
 
-			$xml = (array)simplexml_load_file("http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?".$qs);
+			$xml = simplexml_load_file("http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx/CalcPrecoPrazo?".$qs);
 
 			$result = $xml->Servicos->cServico;
 
@@ -263,22 +263,23 @@ class Cart extends Model
 		}
 
 	} // End function setFreight
-*/
-/*	public static function formatValueToDecimal($value):float
+
+	public static function formatValueToDecimal($value):float
 	{
 
 		$value = str_replace(".", "", $value);
 		return str_replace(",", ".", $value);
+
 	} // End function formatValueToDecimal
-*/
-/*	public static function setMsgError()
+
+	public static function setMsgError()
 	{
 
 		$_SESSION[Cart::SESSION_ERROR] = $msg;
 			
 	} // End function setMsgErro
-*/
-/*	public static function getMsgError()
+
+	public static function getMsgError()
 	{
 
 		$msg = (isset($_SESSION[Cart::SESSION_ERROR])) ? $_SESSION[Cart::SESSION_ERROR] : "";
@@ -288,26 +289,26 @@ class Cart extends Model
 		return $msg;
 			
 	} // End function getMsgErro
-*/
-/*	public static function clearMsgError()
+
+	public static function clearMsgError()
 	{
 
 		$_SESSION[Cart::SESSION_ERROR] = NULL;
 			
 	} // End function getMsgErro
-*/
-/*	public function updateFreight()
+
+	public function updateFreight()
 	{
 
 		if ($this->getdeszipcode() != "") {
 
-			$this->setFreight($this->getdeszipcode);
+			$this->setFreight($this->getdeszipcode());
 
 		}
 
 	} // function updateFreight
-*/
-/*	public function getValues()
+
+	public function getValues()
 	{
 
 		$this->getCalculateTotal();
@@ -315,8 +316,8 @@ class Cart extends Model
 		return parent::GetValues();
 
 	} // End function getValues
-*/
-/*	public function getCalculateTotal()
+
+	public function getCalculateTotal()
 	{
 
 		$this->updateFreight();
@@ -327,7 +328,7 @@ class Cart extends Model
 		$this->setvltotal($totals["vlprice"] + $this->getvlfreight());
 
 	} // End function getCalculateTotal
-*/
+
 } // End class User
 
 ?>
