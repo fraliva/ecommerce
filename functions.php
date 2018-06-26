@@ -2,7 +2,7 @@
 
 use \Hcode\Model\User;
 
-function formatPrice($vlprice)
+function formatPrice(float $vlprice)
 {
 
 	if (!$vlprice > 0 ) $vlprice = 0;

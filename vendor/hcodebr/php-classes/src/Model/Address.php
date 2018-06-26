@@ -64,8 +64,8 @@ class Address extends Model
 			":descity"=>utf8_decode($this->getdescity()),
 			":desstate"=>$this->getdesstate(),
 			":descountry"=>utf8_decode($this->getdescountry()),
-			":deszipcode"=$this->getdeszipcode(),
-			":desdistrict"=$this->getdesdistrict()
+			":deszipcode"=>$this->getdeszipcode(),
+			":desdistrict"=>$this->getdesdistrict()
 		));
 
 		if (count($results) > 0 ) {

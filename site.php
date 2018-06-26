@@ -304,7 +304,7 @@ $app->post("/login", function(){
 
 });
 
-$app->get("logout", function(){
+$app->get("/logout", function(){
 
 	User::logout();
 
@@ -317,7 +317,7 @@ $app->post("/register", function(){
 
 	$_SESSION["registerValues"] = $_POST;
 
-	if (!isser($_POST["name"]) || $_POST["name"] =="") {
+	if (!isset($_POST["name"]) || $_POST["name"] =="") {
 
 		User::setErrorRegister("Preencha o seu nome.");
 
@@ -326,7 +326,7 @@ $app->post("/register", function(){
 
 	}	
 
-	if (!isser($_POST["email"]) || $_POST["email"] =="") {
+	if (!isset($_POST["email"]) || $_POST["email"] =="") {
 
 		User::setErrorRegister("Preencha o seu e-mail.");
 
@@ -334,7 +334,7 @@ $app->post("/register", function(){
 		exit;
 
 	}
-	if (!isser($_POST["password"]) || $_POST["password"] =="") {
+	if (!isset($_POST["password"]) || $_POST["password"] =="") {
 
 		User::setErrorRegister("Preencha a senha.");
 
@@ -356,7 +356,7 @@ $app->post("/register", function(){
 
 	$user->setData([
 		"inadmin"=>0,
-		"deslogin"=>$_POST["login"],
+		"deslogin"=>$_POST["email"],
 		"desperson"=>$_POST["name"],
 		"desemail"=>$_POST["email"],
 		"despassword"=>$_POST["password"],
