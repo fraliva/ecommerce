@@ -466,7 +466,7 @@ $app->post("/profile", function(){
 
 	$user = User::getFromSession();
 
-	if ($POST['desemail'] !== $user->getdesemail()) {
+	if ($_POST['desemail'] !== $user->getdesemail()) {
 
 		if (User::checkLoginExists($_POST['desemail']) === true) {
 

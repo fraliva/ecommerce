@@ -30,9 +30,6 @@ class Address extends Model
 
 		return $data;
 
-		var_dump($data);
-		exit;
-
 	} // End function getCEP
 
 	public function loadFromCEP($nrcep)
@@ -46,7 +43,7 @@ class Address extends Model
 			$this->setdesdistrict($data['bairro']);
 			$this->setdescity($data['localidade']);
 			$this->setdesstate($data['uf']);
-			//$this->setdescountry($data['Brasil']);
+			$this->setdescountry('Brasil');
 			$this->setdeszipcode($data['cep']);
 
 
@@ -66,7 +63,7 @@ class Address extends Model
 			":descomplement"=>utf8_decode($this->getdescomplement()),
 			":descity"=>utf8_decode($this->getdescity()),
 			":desstate"=>$this->getdesstate(),
-			//":descountry"=>utf8_decode($this->getdescountry()),
+			":descountry"=>utf8_decode($this->getdescountry()),
 			":deszipcode"=>$this->getdeszipcode(),
 			":desdistrict"=>$this->getdesdistrict()
 		));
@@ -78,7 +75,7 @@ class Address extends Model
 		}
 	} // End function save
 
-	public static function setMsgError()
+	public static function setMsgError($msg)
 	{
 
 		$_SESSION[Address::SESSION_ERROR] = $msg;

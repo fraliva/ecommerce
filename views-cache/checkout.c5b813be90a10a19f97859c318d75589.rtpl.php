@@ -85,7 +85,7 @@
 															<?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <strong class="product-quantity">× <?php echo htmlspecialchars( $value1["nrqtd"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong> 
 														</td>
 														<td class="product-total">
-															<span class="amount">R$ <?php echo formatPrice($value1["nltotal"]); ?></span>
+															<span class="amount">R$<?php echo formatPrice($value1["vlprice"]); ?></span>
 														</td>
                                                     </tr>
                                                     <?php } ?>
@@ -94,13 +94,13 @@
 												<tfoot>
 													<tr class="cart-subtotal">
 														<th>Subtotal</th>
-														<td><span class="amount">R$ <?php echo formatPrice($cart->vlsubtotal); ?></span>
+														<td><span class="amount">R$<?php echo formatPrice($cart->vlsubtotal); ?></span>
 														</td>
 													</tr>
 													<tr class="shipping">
 														<th>Frete</th>
 														<td>
-															R$ <?php echo formatPrice($cart->vlfreight); ?>
+															R$<?php echo formatPrice($cart->vlfreight); ?>
 
 															<input type="hidden" class="shipping_method" value="free_shipping" id="shipping_method_0" data-index="0" name="shipping_method[0]">
 														</td>
