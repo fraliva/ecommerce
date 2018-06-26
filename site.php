@@ -166,13 +166,12 @@ $app->get("/checkout", function(){
 	}
 
 	if (!$address->getdesaddress()) $address->setdesaddress();
-	if (!$address->getdescomplement()) $complement->setdescomplement();
+	//if (!$address->getdescomplement()) $address->setdescomplement();
 	if (!$address->getdesdistrict()) $address->setdesdistrict();
 	if (!$address->getdescity()) $address->setdescity();
 	if (!$address->getdesstate()) $address->setdesstate();
-	if (!$address->getcountry()) $address->setcountry();
+	if (!$address->getdescountry()) $address->setdescountry();
 	if (!$address->getdeszipcode()) $address->setdeszipcode();
-
 
 	$page = new Page();
 
