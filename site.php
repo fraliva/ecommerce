@@ -534,8 +534,8 @@ $app->get("/boleto/:idorder", function($idorder){
 
 	// DADOS DO SEU CLIENTE
 	$dadosboleto["sacado"] = $order->getperson();
-	$dadosboleto["endereco1"] = $order->getdesaddress(). " " . $order->getdesdistrict();
-	$dadosboleto["endereco2"] = $order->getdescity(). " " . $order->getdesstate(). " " . $order->getdescountry(). " CEP: " . $order->getdeszipcode();
+	$dadosboleto["endereco1"] = utf8_encode($order->getdesaddress()). " " . utf8_encode($order->getdesdistrict());
+	$dadosboleto["endereco2"] = utf8_encode($order->getdescity()). " " . $order->getdesstate(). " " . $order->getdescountry(). " CEP: " . $order->getdeszipcode();
 
 	// INFORMACOES PARA O CLIENTE
 	$dadosboleto["demonstrativo1"] = "Pagamento de Compra na Loja Hcode E-commerce";
