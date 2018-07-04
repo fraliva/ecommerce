@@ -49,7 +49,7 @@ class Order extends Model
 
 		if (count($results) > 0 ) {
 
-			$this-setData($results[0]);
+			$this->setData($results[0]);
 
 		}
 

@@ -501,7 +501,7 @@ $app->get("/order/:idorder", function($idorder){
 
 	$page = new Page();
 
-	$page->stTpl("payment", array(
+	$page->setTpl("payment", array(
 		"order"=>$order->getValues()
 	));
 });
