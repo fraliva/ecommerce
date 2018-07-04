@@ -24,7 +24,7 @@ class Order extends Model
 
 		if (count($results) > 0) {
 
-			$this->setData($resulst[0]);
+			$this->setData($results[0]);
 		}
 
 	} // End function save

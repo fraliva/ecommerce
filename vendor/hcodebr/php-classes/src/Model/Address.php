@@ -46,7 +46,6 @@ class Address extends Model
 			$this->setdescountry('Brasil');
 			$this->setdeszipcode($data['cep']);
 
-
 		}
 
 	} // End function loadFromCEP
@@ -56,21 +55,21 @@ class Address extends Model
 
 		$sql = new Sql();
 
-		$results = $sql->select("CALL sp_address_save(:idaddress, :idperson, :desaddress, :descomplement, :descity, :desstate, :descountry, :deszipcode, :desdistrict)", array(
+		$results = $sql->select("CALL sp_addresses_save(:idaddress, :idperson, :desaddress, :descomplement, :descity, :desstate, :descountry, :deszipcode, :desdistrict)", array(
 			":idaddress"=>$this->getidaddress(),
 			":idperson"=>$this->getidperson(),
-			":desaddress"=>utf8_decode($this->desaddress()),
+			":desaddress"=>utf8_decode($this->getdesaddress()),
 			":descomplement"=>utf8_decode($this->getdescomplement()),
 			":descity"=>utf8_decode($this->getdescity()),
 			":desstate"=>$this->getdesstate(),
 			":descountry"=>utf8_decode($this->getdescountry()),
 			":deszipcode"=>$this->getdeszipcode(),
-			":desdistrict"=>$this->getdesdistrict()
+			":desdistrict"=>utf8_decode($this->getdesdistrict())
 		));
 
 		if (count($results) > 0 ) {
 
-			$this->setData($result[0]);
+			$this->setData($results[0]);
 
 		}
 	} // End function save
