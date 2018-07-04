@@ -421,6 +421,32 @@ class User extends Model
 
 	} // End function getPasswordHash
 
+	public function getOrders()
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT * 
+			FROM tb_orders a 
+			INNER JOIN tb_ordersstatus b USING(idstatus)
+			INNER JOIN tb_carts c USING(idcart)
+			INNER JOIN tb_users d ON d.iduser = a.iduser
+			INNER JOIN tb_addresses e USING(idaddress)
+			INNER JOIN tb_persons f ON f.idperson = d.idperson
+			WHERE a.iduser = :iduser", 
+			array(
+				":iduser"=>$this->getiduser()
+			));
+
+		if (count($results) > 0 ) {
+
+			return $results;
+
+		}
+
+	} // End  function getOrders 
+
 } // End class User
 
 ?>
