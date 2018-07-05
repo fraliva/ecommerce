@@ -470,7 +470,7 @@ class User extends Model
 			"pages"=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
 		);
 
-	} // End function getProductsPage
+	} // End function getPage
 
 	public static function getPageSearch($search, $page = 1, $itemsPerPage = 10)
 	{
@@ -499,7 +499,7 @@ class User extends Model
 			"pages"=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
 		);
 
-	} // End function getProductsPage
+	} // End function getPageSearch
 
 } // End class User
 
