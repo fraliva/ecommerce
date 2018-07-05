@@ -23,13 +23,12 @@ $app->get("/admin/categories", function(){
 		
 	}
 	
-
 	$pages = [];
 
 	for ($x = 0; $x < $pagination["pages"]; $x++)
 	{
 		array_push($pages, array(
-			"href"=>"/admin/users?".http_build_query(array(
+			"href"=>"/admin/categories?".http_build_query(array(
 				"page"=>$x+1,
 				"search"=>$search
 			)),
