@@ -12,6 +12,13 @@ function formatPrice($vlprice)
 
 } // End function formatPrice
 
+function formateDate($date)
+{
+
+	return date("d/m/Y", strtotime($date));
+	
+} // End function formateDate
+
 function checkLogin($inadmin = true)
 {
 
